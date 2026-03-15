@@ -1,0 +1,6 @@
+post_nanomer_edition_styles:
+  css:
+    theme:
+      css/post-nanomer-edition.css: {}
+  js:
+    js/post-nanomer-edition.js: {}

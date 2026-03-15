@@ -1,0 +1,64 @@
+# Spanish translation for Post Nanomer Edition module
+# Copyright (C) 2026 NanoAndes
+# This file is distributed under the same license as the Post Nanomer Edition module package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: post_nanomer_edition 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Important Dates"
+msgstr "Fechas Importantes"
+
+msgid "Note:"
+msgstr "Nota:"
+
+msgid "Application Requirements"
+msgstr "Requisitos de Aplicación"
+
+msgid "Required Documents"
+msgstr "Documentos Requeridos"
+
+msgid "Application Procedure"
+msgstr "Procedimiento de Solicitud"
+
+msgid "Selection Criteria"
+msgstr "Criterios de Selección"
+
+msgid "Scholarships and Benefits"
+msgstr "Becas y Beneficios"
+
+msgid "Selected Students' Commitments"
+msgstr "Compromisos de los Estudiantes Seleccionados"
+
+msgid "Have Questions?"
+msgstr "¿Tienes Preguntas?"
+
+msgid "For any questions or inquiries, don't hesitate to contact us"
+msgstr "Para cualquier pregunta o consulta, no dudes en contactarnos"
+
+msgid "Student Selection Guidelines"
+msgstr "Directrices de Selección de Estudiantes"
+
+msgid "School Objective"
+msgstr "Objetivo de la Escuela"
+
+msgid "XIV International School NanoAndes"
+msgstr "XIV Escuela Internacional NanoAndes"
+
+msgid "I Pedagogical School Nanomer 2025"
+msgstr "I Escuela Pedagógica Nanomer 2025"
+
+msgid "No second call will be made if the number of applications exceeds 200 candidates."
+msgstr "No se realizará una segunda convocatoria si el número de solicitudes supera 200 candidatos."
+
+msgid "XIV International School NanoAndes Organizing Committee<br>Scientific and Student Selection Committee"
+msgstr "Comité Organizador de la Escuela Internacional NanoAndes XIV<br>Comité de Selección Científica y de Estudiantes"
+
+msgid "To strengthen the advanced training of Latin American students in the field of <span class=\"highlight\">nanotechnology applied to health, environment</span> and other strategic areas, through active participation in theoretical and practical sessions, lectures and scientific discussions."
+msgstr "Fortalecer la formación avanzada de estudiantes latinoamericanos en el campo de la <span class=\"highlight\">nanotecnología aplicada a la salud, el medio ambiente</span> y otras áreas estratégicas, a través de la participación activa en sesiones teóricas y prácticas, conferencias y discusiones científicas."
+
+msgid "No criteria defined."
+msgstr "No se han definido criterios."
