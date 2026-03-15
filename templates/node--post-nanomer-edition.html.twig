@@ -95,47 +95,98 @@
 }
 /* Cards */
 .nanoandes-content .nano-card {
-    background: white;
+    background: transparent;
     border-radius: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    box-shadow: none;
+    transition: transform 0.3s ease;
     overflow: hidden;
 }
 .nanoandes-content .nano-card:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
+    transform: translateY(-5px);
 }
 .nanoandes-content .nano-card-header {
-    padding: 2rem 2rem 1rem;
+    padding: 0;
 }
 .nanoandes-content .nano-card-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #1e293b;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    display: none;
 }
 .nanoandes-content .nano-card-content {
-    padding: 0 2rem 2rem;
-    font-size: 1.3rem;
-    line-height: 1.6;
+    padding: 1.5rem 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+    color: #1a1a1a;
+    font-weight: 400;
+}
+/* Resources Cards Specific Styles */
+.nano-resource-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: transparent !important;
+}
+.nano-resource-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 0;
+    border: none;
+}
+.nano-resource-body {
+    padding: 1.5rem 0.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.nano-resource-title {
+    display: none;
+}
+.nano-resource-desc {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+    font-weight: 400;
+}
+.nano-resource-button {
+    display: inline-block;
+    background-color: #000000;
+    color: white !important;
+    padding: 0.5rem 1.8rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.2s;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+.nano-resource-button:hover {
+    background-color: #333333;
 }
 /* Grid layouts */
 .nanoandes-content .nano-grid-3 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 3rem;
     margin-bottom: 1rem;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .nanoandes-content .nano-grid-2 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 2.5rem;
     margin-bottom: 1rem;
 }
 .nanoandes-content .nano-grid-4 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
     margin-bottom: 1rem;
 }
@@ -451,10 +502,10 @@
 {% endmacro %}
 
 {% set academic_items = [] %}
-{% for i, item in node.field_academic_titulo %}
+{% for item in node.field_academic_descripcion %}
     {% set academic_items = academic_items|merge([{
-        'title': '🎓 ' ~ item.value, 
-        'content': node.field_academic_descripcion[i].value 
+        'title': '', 
+        'content': item.value 
     }]) %}
 {% endfor %}
 
@@ -491,14 +542,15 @@
         <!-- Galería Flickr -->
         {% if flickr_frames %}
         <section class="nano-section">
-            <h3>{{ 'Photo Gallery' | t }}</h3>
-            <div class="nano-grid-2">
+            <h3 style="margin-bottom: 1.5rem;">{{ 'Photo Gallery' | t }}</h3>
+            <div class="flickr-wrapper" style="max-width: 800px; margin: 0 auto; padding: 0 15px;">
                 {% for frame in flickr_frames %}
-                    <div class="flickr-container" style="background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <div class="flickr-embed-item" style="margin-bottom: 2rem; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                         {{ frame | raw }}
                     </div>
                 {% endfor %}
             </div>
+            <script async src="https://embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
         </section>
         {% endif %}
 
@@ -520,5 +572,99 @@
         </section>
         {% endif %}
 
+        <!-- Resources Section -->
+        {% if node.field_resources_titulo|length > 0 %}
+        <section class="nano-section">
+            <h3>{{ 'Resources' | t }}</h3>
+            <div class="nano-grid-3">
+                {% for i, item in node.field_resources_titulo %}
+                    <div class="nano-card nano-resource-card">
+                        {% if node.field_resources_imagen[i].entity %}
+                            <img src="{{ file_url(node.field_resources_imagen[i].entity.fileuri) }}" alt="{{ node.field_resources_imagen[i].alt }}" class="nano-resource-image">
+                        {% endif %}
+                        <div class="nano-resource-body">
+                            <div class="nano-resource-title">{{ item.value }}</div>
+                            <div class="nano-resource-desc">
+                                {{ node.field_resources_descripcion[i].value | raw }}
+                            </div>
+                            {% if node.field_resources_link[i].value %}
+                                <a href="{{ node.field_resources_link[i].value }}" class="nano-resource-button" target="_blank">
+                                    {{ 'Conoce más' | t }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        {# Instituciones de Apoyo (Carrusel de Logos) #}
+        {% set support_groups = [
+            {'title': 'Instituciones que hacen posible esta edición', 'field': node.field_support_enabling},
+            {'title': 'Auspiciadores', 'field': node.field_support_sponsors},
+            {'title': 'Instituciones colaboradoras', 'field': node.field_support_collaborating}
+        ] %}
+
+        {% for group in support_groups %}
+            {% if group.field|length > 0 %}
+                <section class="nano-section">
+                    <h3>{{ group.title | t }}</h3>
+                    <div class="logo-carousel-container">
+                        <div class="logo-track">
+                            {# Duplicamos los logos 3 veces para asegurar que el carrusel sea fluido #}
+                            {% for i in 1..3 %}
+                                {% for item in group.field %}
+                                    {% if item.entity %}
+                                        <div class="logo-item">
+                                            <img src="{{ file_url(item.entity.fileuri) }}" alt="Logo" class="support-logo">
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        {% endfor %}
+
     </div>
 </div>
+
+<style>
+.logo-carousel-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0;
+    position: relative;
+    background: transparent;
+}
+.logo-track {
+    display: flex;
+    width: max-content;
+    animation: scrollLogos 40s linear infinite;
+    align-items: center;
+}
+.logo-item {
+    padding: 0 40px;
+    flex: 0 0 auto;
+}
+.support-logo {
+    max-height: 80px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+.support-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+@keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.33%); }
+}
+</style>

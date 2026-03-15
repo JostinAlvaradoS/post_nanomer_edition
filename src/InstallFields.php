@@ -31,8 +31,18 @@ class InstallFields {
       
       'objetivos_edicion' => ['label' => 'Objectives of the edition', 'type' => 'text_long', 'cardinality' => 1, 'required' => FALSE],
       
-      'academic_titulo' => ['label' => 'Academic - Título del Item', 'type' => 'string', 'cardinality' => -1, 'required' => FALSE],
-      'academic_descripcion' => ['label' => 'Academic - Descripción del Item', 'type' => 'text_long', 'cardinality' => -1, 'required' => FALSE],
+      'academic_descripcion' => ['label' => 'Academic - Descripción del Item (HTML)', 'type' => 'text_long', 'cardinality' => -1, 'required' => FALSE],
+      
+      // Resources Section
+      'resources_imagen' => ['label' => 'Resources - Imagen', 'type' => 'image', 'cardinality' => -1, 'required' => FALSE],
+      'resources_titulo' => ['label' => 'Resources - Título', 'type' => 'string', 'cardinality' => -1, 'required' => FALSE],
+      'resources_descripcion' => ['label' => 'Resources - Descripción', 'type' => 'text_long', 'cardinality' => -1, 'required' => FALSE],
+      'resources_link' => ['label' => 'Resources - Link (URL)', 'type' => 'string', 'cardinality' => -1, 'required' => FALSE],
+      
+      // Footer/Support Sections
+      'support_enabling' => ['label' => 'Institutions Enabling this Edition (Logos)', 'type' => 'image', 'cardinality' => -1, 'required' => FALSE],
+      'support_sponsors' => ['label' => 'Sponsors (Logos)', 'type' => 'image', 'cardinality' => -1, 'required' => FALSE],
+      'support_collaborating' => ['label' => 'Collaborating Institutions (Logos)', 'type' => 'image', 'cardinality' => -1, 'required' => FALSE],
       
       'edicion_imagen' => ['label' => 'Imagen de la Edición (para carrusel)', 'type' => 'image', 'cardinality' => 1, 'required' => FALSE],
     ];
@@ -229,34 +239,19 @@ class InstallFields {
     $secciones = [
       'hero_titulo' => ['label' => 'Hero - Título Principal', 'type' => 'string', 'cardinality' => 1, 'required' => FALSE],
       'hero_descripcion' => ['label' => 'Hero - Subtítulo', 'type' => 'string', 'cardinality' => 1, 'required' => FALSE],
-      
       'descripcion_contenido' => ['label' => 'Description - Contenido', 'type' => 'text_long', 'cardinality' => 1, 'required' => FALSE],
       'fecha_lugar' => ['label' => 'Fecha y Lugar', 'type' => 'string', 'cardinality' => 1, 'required' => FALSE],
-      
       'flickr_iframes' => ['label' => 'Flickr - Iframes (uno por línea)', 'type' => 'text_long', 'cardinality' => -1, 'required' => FALSE],
-      
       'objetivos_edicion' => ['label' => 'Objectives of the edition', 'type' => 'text_long', 'cardinality' => 1, 'required' => FALSE],
-      
-      'academic_titulo' => ['label' => 'Academic - Título del Item', 'type' => 'string', 'cardinality' => -1, 'required' => FALSE],
-      'academic_descripcion' => ['label' => 'Academic - Descripción del Item', 'type' => 'text_long', 'cardinality' => -1, 'required' => FALSE],
-      
+      'academic_descripcion' => ['label' => 'Academic - Descripción del Item (HTML)', 'type' => 'text_long', 'cardinality' => -1, 'required' => FALSE],
+      'resources_imagen' => ['label' => 'Resources - Imagen', 'type' => 'image', 'cardinality' => -1, 'required' => FALSE],
+      'resources_titulo' => ['label' => 'Resources - Título', 'type' => 'string', 'cardinality' => -1, 'required' => FALSE],
+      'resources_descripcion' => ['label' => 'Resources - Descripción', 'type' => 'text_long', 'cardinality' => -1, 'required' => FALSE],
+      'resources_link' => ['label' => 'Resources - Link (URL)', 'type' => 'string', 'cardinality' => -1, 'required' => FALSE],
+      'support_enabling' => ['label' => 'Institutions Enabling this Edition (Logos)', 'type' => 'image', 'cardinality' => -1, 'required' => FALSE],
+      'support_sponsors' => ['label' => 'Sponsors (Logos)', 'type' => 'image', 'cardinality' => -1, 'required' => FALSE],
+      'support_collaborating' => ['label' => 'Collaborating Institutions (Logos)', 'type' => 'image', 'cardinality' => -1, 'required' => FALSE],
       'edicion_imagen' => ['label' => 'Imagen de la Edición (para carrusel)', 'type' => 'image', 'cardinality' => 1, 'required' => FALSE],
-    ];
-
-    foreach ($secciones as $field_name => $field_config) {
-      
-      // Criterios (Repetible simple)
-      'criterios_items' => ['label' => 'Criterios - Item individual', 'type' => 'string', 'cardinality' => -1, 'required' => FALSE],
-      
-      'becas_contenido' => ['label' => 'Becas - Contenido', 'type' => 'text_long', 'cardinality' => 1, 'required' => FALSE],
-      
-      // Compromisos
-      'compromisos_descripcion' => ['label' => 'Compromisos - Descripción', 'type' => 'string', 'cardinality' => -1, 'required' => FALSE],
-      
-      'edicion_imagen' => ['label' => 'Imagen de la Edición', 'type' => 'image', 'cardinality' => 1, 'required' => FALSE],
-
-      'contacto_email' => ['label' => 'Contacto - Email', 'type' => 'string', 'cardinality' => 1, 'required' => FALSE],
-      'contacto_contenido' => ['label' => 'Contacto - Información Adicional', 'type' => 'text_long', 'cardinality' => 1, 'required' => FALSE],
     ];
 
     // PASO 1: Eliminar EntityFormDisplay y EntityViewDisplay (PRIMERO)
