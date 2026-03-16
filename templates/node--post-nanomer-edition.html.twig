@@ -669,13 +669,16 @@
 
 /* Nuevos Estilos Compactos para Resources */
 .resources-grid-compact {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 .resource-card-compact {
+    flex: 0 0 320px;
+    max-width: 320px;
     background: #fff;
     border: 1px solid #eee;
     border-radius: 8px;
@@ -751,7 +754,7 @@
     left: 0;
     width: 6px;
     height: 100%;
-    background: #2563eb;
+    background: #4b5563; /* Gris elegante (Slate-600) en lugar de azul */
 }
 .academic-card:hover {
     transform: scale(1.02);
